@@ -36,7 +36,7 @@ public class EmployeeRestController {
 
     @PostMapping("/employees")
     public Employee addEmployee(@RequestBody Employee employee) {
-        employee.setId(0);
+        employee.setId(0L);
         employeeService.save(employee);
 
         return employee;
