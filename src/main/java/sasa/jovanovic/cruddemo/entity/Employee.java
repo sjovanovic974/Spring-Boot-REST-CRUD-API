@@ -1,47 +1,39 @@
 package sasa.jovanovic.cruddemo.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
-@Table(name="employees")
+@Table(name = "employee")
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "emp_no")
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private long id;
 
     @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name")
-    private String lastname;
+    private String lastName;
 
-    @Column(name = "gender")
-    private char gender;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "birth_date")
-    private LocalDate birthDate;
-
-    @Column(name = "hire_date")
-    private LocalDate hireDate;
-
-    public Employee() {}
-
-    public Employee(String firstName, String lastname, char gender, LocalDate birthDate, LocalDate hireDate) {
-        this.firstName = firstName;
-        this.lastname = lastname;
-        this.gender = gender;
-        this.birthDate = birthDate;
-        this.hireDate = hireDate;
+    public Employee() {
     }
 
-    public int getId() {
+    public Employee(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -53,36 +45,20 @@ public class Employee {
         this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public char getGender() {
-        return gender;
+    public String getEmail() {
+        return email;
     }
 
-    public void setGender(char gender) {
-        this.gender = gender;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public LocalDate getHireDate() {
-        return hireDate;
-    }
-
-    public void setHireDate(LocalDate hireDate) {
-        this.hireDate = hireDate;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -90,10 +66,8 @@ public class Employee {
         return "Employee{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", gender=" + gender +
-                ", birthDate=" + birthDate +
-                ", hireDate=" + hireDate +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

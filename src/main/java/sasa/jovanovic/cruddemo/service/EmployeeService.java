@@ -1,10 +1,10 @@
-package sasa.jovanovic.cruddemo.dao;
+package sasa.jovanovic.cruddemo.service;
 
 import sasa.jovanovic.cruddemo.entity.Employee;
 
 import java.util.List;
 
-public interface EmployeeDAO {
+public interface EmployeeService {
 
     List<Employee> findAll();
 
