@@ -19,15 +19,15 @@ public class EmployeeRestController {
     }
 
     @GetMapping("/employees")
-    public List<Employee> getEmployees(){
+    public List<Employee> getEmployees() {
         return employeeService.findAll();
     }
 
     @GetMapping("/employees/{id}")
-    public Employee getEmployeeById(@PathVariable long id){
+    public Employee getEmployeeById(@PathVariable long id) {
         Employee employee = employeeService.findById(id);
 
-        if(employee == null) {
+        if (employee == null) {
             throw new RuntimeException("Employee id not found - " + id);
         }
 
@@ -40,5 +40,24 @@ public class EmployeeRestController {
         employeeService.save(employee);
 
         return employee;
+    }
+
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee employee) {
+        employeeService.save(employee);
+        return employee;
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public String deleteEmployee(@PathVariable long id) {
+        Employee employee = employeeService.findById(id);
+
+        if (employee == null) {
+            throw new RuntimeException("Employee id not found - " + id);
+        }
+
+        employeeService.deleteById(id);
+
+        return "Deleted employee id - " + id;
     }
 }
